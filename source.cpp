@@ -1,36 +1,35 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <typeinfo>
 
 using namespace std;
 
 
-void func(int i){
-    cout << "func(int) called \n";
-}
-
-void func(int *i){
-    cout << "func(int *) called\n";
+bool isEven (int n){
+    return (n % 2 == 0);
 }
 
 int main() {
-    int x{7}; //Equivalent to int x = 7;
-    string s{"Let us begin"}; //Equivalent to string s("Let us begin");
-    cout << "x = " << x << endl;
-    cout << "s = \"" << x << "\"" << endl;
-
     vector<int> v{4, 2, 3, 5, 1};
-    string hello{'H', 'e', 'l', 'l', 'o'};
+    
+    cout << "Elements of vector: ";
+    
+    for(auto i : v)
+        cout << i << ", ";
+    cout << endl;
 
-    for(auto& it : v)
-        it += 2;
+    // auto nEven = count_if(v.begin(), v.end(), isEven);  //Without lambda
+    auto nEven = count_if(v.begin(), v.end(), 
+        [] (int n) {    //This is a one liner lambda function; if 2 or more, then: [] (int n) -> int {...; return (integer variable);}
+            return (n % 2 == 0);
+        });
 
-    cout << "v= ";
-    for(vector<int>::iterator it = v.begin(); it != v.end(); ++it)
-        cout << *it << ", ";
+    auto x{47};
+    auto y = [&x](){
+         return x * 2;
+        };
 
-    cout << endl << "hello = \""<< hello << "\"" << endl;
-
-    // func(NULL);
-    // func(nullptr);
+    cout << (y() > 200) << " " << x << endl;
+    cout << "There are " << nEven << " even numbers in the v vector" << endl;
 }
