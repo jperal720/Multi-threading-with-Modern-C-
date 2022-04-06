@@ -13,6 +13,6 @@ int main() {
 			);
 	}
 	catch (exception& e) {
-		cout << "Cuaght exception: " << e.what() << endl;
+		cout << "Caught® exception: " << e.what() << endl;
 	}
 }
