@@ -10,6 +10,10 @@ bool isEven (int n){
     return (n % 2 == 0);
 }
 
+void func(int*& ptrArg){
+    *ptrArg *= 2;
+}
+
 int main() {
     vector<int> v{4, 2, 3, 5, 1};
     
@@ -29,6 +33,10 @@ int main() {
     auto y = [&x](){
          return x * 2;
         };
+    auto ptr{&x};
+    func(ptr);
+    cout << *ptr << endl;
+
 
     cout << (y() > 200) << " " << x << endl;
     cout << "There are " << nEven << " even numbers in the v vector" << endl;
