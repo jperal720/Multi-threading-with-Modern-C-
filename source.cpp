@@ -12,6 +12,9 @@ bool isEven (int n){
 
 void func(int*& ptrArg){
     *ptrArg *= 2;
+    int var = *ptrArg;
+    cout << "This is var: " << (var *= 2) << endl;
+
 }
 
 int main() {
@@ -34,6 +37,10 @@ int main() {
          return x * 2;
         };
     auto ptr{&x};
+    int ** ptrToPtr = &ptr;
+    int *** ptrtoptrtoptr = &ptrToPtr;
+    cout << ***ptrtoptrtoptr << endl;
+    cout << "Value of ptr without ampersand: " << ptr << "\nValue of ptr with ampersand(address): " << &ptr << " " << ptrToPtr << " " << &ptrToPtr << " " << *ptrToPtr << " " << **ptrToPtr << endl;
     func(ptr);
     cout << *ptr << endl;
 
