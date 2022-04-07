@@ -2,26 +2,23 @@
 #include <string>
 #include <vector>
 #include <typeinfo>
+#include <random>
 
 using namespace std;
 
 class test {
-    private:
-        test(const test&){  //Copy constructor
-            cout << "Copy constructor is accessed" << endl; 
-        } 
-        test& operator=(const test&){   //Copy assignment operator
-            cout << "Copy assignment operator" << endl;
-        }
-        
     public:
-        test(){
-            cout << "Default constructor" << endl;
-        }
+        test(const test&) = delete;
+        test& operator=(const test&) = delete;
+        test(test&&) noexcept = default;
+        test& operator=(test&&) noexcept = default;
 
+
+        test() = default;
 };
 
 int main() {
     test t1, t2;
-    t1 = t2;
+    test t4(std::move(t2));
+    t2 = (std::move(t4));
 }
