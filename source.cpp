@@ -6,19 +6,13 @@
 
 using namespace std;
 
-class test {
-    public:
-        test(const test&) = delete;
-        test& operator=(const test&) = delete;
-        test(test&&) noexcept = default;
-        test& operator=(test&&) noexcept = default;
-
-
-        test() = default;
-};
-
 int main() {
-    test t1, t2;
-    test t4(std::move(t2));
-    t2 = (std::move(t4));
+    mt19937 mt;     //Create random number engine instance
+
+    cout << "10 random integers between 0 and 100:" << endl;
+    uniform_int_distribution<int> uid(0,100);       //We want ints in the range 0 to 100
+
+    for (int i = 0; i < 10; i++){
+        cout << uid(mt) << ", ";        //Get the next random number
+    }
 }
