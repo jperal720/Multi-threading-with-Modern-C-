@@ -17,6 +17,13 @@ void func(int*& ptrArg){
 
 }
 
+void arrPractice (){
+    int arr[5] = {10, 3, -3, 33, 4};
+
+    for(int* i = arr; i < arr + std::size(arr); i++)
+        cout << *i << " debug" << endl;
+}
+
 int main() {
     vector<int> v{4, 2, 3, 5, 1};
     
@@ -32,19 +39,21 @@ int main() {
             return (n % 2 == 0);
         });
 
-    auto x{47};
-    auto y = [&x](){
-         return x * 2;
-        };
-    auto ptr{&x};
-    int ** ptrToPtr = &ptr;
-    int *** ptrtoptrtoptr = &ptrToPtr;
-    cout << ***ptrtoptrtoptr << endl;
-    cout << "Value of ptr without ampersand: " << ptr << "\nValue of ptr with ampersand(address): " << &ptr << " " << ptrToPtr << " " << &ptrToPtr << " " << *ptrToPtr << " " << **ptrToPtr << endl;
-    func(ptr);
-    cout << *ptr << endl;
+    // auto x{47};
+    // auto y = [&x](){
+    //      return x * 2;
+    //     };
+    // auto ptr{&x};
+    // int ** ptrToPtr = &ptr;
+    // int *** ptrtoptrtoptr = &ptrToPtr;
+    // cout << ***ptrtoptrtoptr << endl;
+    // cout << "Value of ptr without ampersand: " << ptr << "\nValue of ptr with ampersand(address): " << &ptr << " " << ptrToPtr << " " << &ptrToPtr << " " << *ptrToPtr << " " << **ptrToPtr << endl;
+    // func(ptr);
+    // cout << *ptr << endl;
 
 
-    cout << (y() > 200) << " " << x << endl;
-    cout << "There are " << nEven << " even numbers in the v vector" << endl;
+    // cout << (y() > 200) << " " << x << endl;
+    // cout << "There are " << nEven << " even numbers in the v vector" << endl;
+
+    arrPractice();
 }
